@@ -6,4 +6,14 @@ file(GLOB quarrel_src "src/*.cpp")
 add_executable(quarrel ${quarrel_src})
 
 include_directories("lib")
-target_link_libraries(quarrel ${ImageMagick_LIBRARIES})
+
+find_package(X11 REQUIRED)
+
+if (X11_FOUND)
+  message (STATUS "Including X11 Libaries from " ${X11_INCLUDE_DIR})
+  message (STATUS "Linking against X11 Libaries from " ${X11_LIBRARIES})
+  include_directories (${X11_INCLUDE_DIR})
+  target_link_libraries(quarrel ${X11_LIBRARIES})
+endif (X11_FOUND)
+
+target_link_libraries(quarrel ${X11})
