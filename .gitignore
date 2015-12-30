@@ -1,2 +1,6 @@
 build/
-quarrel_testbed
+quarrel
+Makefile
+cmake_install.cmake
+CMakeCache.txt
+CMakeFiles/
