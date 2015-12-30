@@ -63,5 +63,5 @@ void quarrel::engine::event_loop(void){
   game_window->get_graphics()->draw_line(x, 10, x+90, 100);
   game_window->get_graphics()->draw_arc(x, 10, 90, 90, -45, 180);
   game_window->get_graphics()->draw_string(x, 10, "Vimda Kali");
-  std::this_thread::sleep_for(std::chrono::milliseconds(1));
+  std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the CPU for stability
 }

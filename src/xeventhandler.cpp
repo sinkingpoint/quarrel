@@ -27,8 +27,6 @@ std::vector<std::shared_ptr<quarrel::event>> quarrel::xeventhandler::get_all_eve
     else if(e.type == ClientMessage){
       events.push_back(std::shared_ptr<quarrel::event>(new quarrel::window_closed_event()));
     }
-
-    std::cout << "Found " << events.size() << " events" << std::endl;
   }
 
   return events;
