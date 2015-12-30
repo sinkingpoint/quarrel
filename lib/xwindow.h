@@ -8,7 +8,7 @@
 #include "xgraphics.h"
 
 namespace quarrel{
-  class xwindow : window{
+  class xwindow : public window{
   private:
     Display* display;
     Window base_window;
