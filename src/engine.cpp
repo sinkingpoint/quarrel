@@ -31,7 +31,12 @@ void quarrel::engine::event_loop(void){
     }
   }
 
-  static int x = 0;
+  static int x = 100;
+  game_window->get_graphics()->set_color(0x0000FF);
   game_window->get_graphics()->draw_rectangle(x, 100, 50, 100);
+  game_window->get_graphics()->draw_ellipse(x, 100, 50, 100);
+  game_window->get_graphics()->draw_line(10, 10, 100, 100);
+  game_window->get_graphics()->draw_arc(10, 10, 90, 90, -45, 180);
+  game_window->get_graphics()->draw_string(10, 10, "Vimda Kali");
   std::this_thread::sleep_for(std::chrono::milliseconds(1));
 }
