@@ -16,26 +16,26 @@ namespace quarrel{
 
   class mouse_pressed_event : public event{
   public:
-    mouse_pressed_event();
-    unsigned int button;
+    mouse_pressed_event(unsigned int button);
+    const unsigned int button;
   };
 
   class mouse_released_event : public event{
   public:
-    mouse_released_event();
-    unsigned int button;
+    mouse_released_event(unsigned int button);
+    const unsigned int button;
   };
 
   class key_pressed_event : public event{
   public:
-    key_pressed_event();
-    char key_char;
+    key_pressed_event(unsigned int key);
+    const unsigned int key;
   };
 
   class key_released_event : public event{
   public:
-    key_released_event();
-    char key_char;
+    key_released_event(unsigned int key);
+    const unsigned int key;
   };
 
   class window_closed_event : public event{
