@@ -16,6 +16,7 @@ namespace quarrel{
 
     bool is_closed() const;
 
+    virtual void close() = 0;
     virtual void set_size(uint width, uint height) = 0;
     virtual void set_title(std::string title) = 0;
     virtual graphics* get_graphics(void) = 0;

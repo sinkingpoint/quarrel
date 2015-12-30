@@ -19,6 +19,8 @@ namespace quarrel{
     engine(std::string window_title, uint window_width, uint window_height);
     ~engine();
     void event_loop(void);
+
+    bool is_running(void) const;
   };
 }
 
