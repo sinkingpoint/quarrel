@@ -8,8 +8,7 @@ quarrel::xgraphics::xgraphics(Display* display, Window window) :
 }
 
 void quarrel::xgraphics::fill_rectangle(int x, int y, uint w, uint h){
-  std::cout << "Drawing Rectangle!" << std::endl;
   XSetForeground(display, context, BlackPixel(display, 0));
-	XFillRectangle(display, window, context, 100, 100, 640, 100);
+	XFillRectangle(display, window, context, x, y, w, h);
 	XFlush(display);
 }

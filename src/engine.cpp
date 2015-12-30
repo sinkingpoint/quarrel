@@ -27,11 +27,11 @@ void quarrel::engine::event_loop(void){
   for(std::shared_ptr<quarrel::event> event : events){
     if(event->type == WindowClosedEvent){
       game_window->close();
+      return;
     }
   }
 
   static int x = 0;
-  x += 1;
-  game_window->get_graphics()->fill_rectangle(x, 100, 50, 100);
+  game_window->get_graphics()->draw_rectangle(x, 100, 50, 100);
   std::this_thread::sleep_for(std::chrono::milliseconds(1));
 }
