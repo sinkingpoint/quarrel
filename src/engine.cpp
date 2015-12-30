@@ -49,15 +49,19 @@ void quarrel::engine::event_loop(void){
 
   static int x = 100;
 
-  if(keyboard_input.is_key_down(36)){
+  if(keyboard_input.is_key_down(114)){
     x ++;
   }
-  
+  else if(keyboard_input.is_key_down(113)){
+    x --;
+  }
+
+  game_window->get_graphics()->clear();
   game_window->get_graphics()->set_color(0x0000FF);
   game_window->get_graphics()->draw_rectangle(x, 100, 50, 100);
   game_window->get_graphics()->draw_ellipse(x, 100, 50, 100);
-  game_window->get_graphics()->draw_line(10, 10, 100, 100);
-  game_window->get_graphics()->draw_arc(10, 10, 90, 90, -45, 180);
-  game_window->get_graphics()->draw_string(10, 10, "Vimda Kali");
+  game_window->get_graphics()->draw_line(x, 10, x+90, 100);
+  game_window->get_graphics()->draw_arc(x, 10, 90, 90, -45, 180);
+  game_window->get_graphics()->draw_string(x, 10, "Vimda Kali");
   std::this_thread::sleep_for(std::chrono::milliseconds(1));
 }

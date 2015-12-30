@@ -13,6 +13,9 @@ namespace quarrel{
     Display* display;
   public:
     xgraphics(Display* display, Window window);
+
+    virtual void clear(void);
+
     virtual void set_color(unsigned int color);
 
     virtual void fill_rectangle(int x, int y, unsigned int w, unsigned int h);

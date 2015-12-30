@@ -8,6 +8,10 @@ quarrel::xgraphics::xgraphics(Display* display, Window window) :
   context(XCreateGC(display, window, 0, NULL)){
 }
 
+void quarrel::xgraphics::clear(void){
+  XClearWindow(display, window);
+}
+
 void quarrel::xgraphics::set_color(unsigned int color){
   XSetForeground(display, context, color);
 }
