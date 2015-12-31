@@ -1,6 +1,7 @@
 #include "xgraphics.h"
 #include <iostream>
 #include <string>
+#include "color.h"
 
 quarrel::xgraphics::xgraphics(Display* display, Window window) :
   display(display),
@@ -14,6 +15,10 @@ void quarrel::xgraphics::clear(void){
 
 void quarrel::xgraphics::set_color(unsigned int color){
   XSetForeground(display, context, color);
+}
+
+void quarrel::xgraphics::set_color(quarrel::color color){
+  XSetForeground(display, context, color.get());
 }
 
 void quarrel::xgraphics::fill_rectangle(int x, int y, uint w, uint h){

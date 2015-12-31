@@ -2,6 +2,7 @@
 #define QUARREL_XGRAPHICS_H
 
 #include "graphics.h"
+#include "color.h"
 #include <X11/Xlib.h>
 #include <string>
 
@@ -17,6 +18,7 @@ namespace quarrel{
     virtual void clear(void);
 
     virtual void set_color(unsigned int color);
+    virtual void set_color(color color);
 
     virtual void fill_rectangle(int x, int y, unsigned int w, unsigned int h);
     virtual void draw_rectangle(int x, int y, unsigned int w, unsigned int h);

@@ -1,6 +1,7 @@
 #ifndef QUARREL_GRAPHICS_H
 #define QUARREL_GRAPHICS_H
 #include <string>
+#include "color.h"
 
 namespace quarrel{
   class graphics{
@@ -8,6 +9,7 @@ namespace quarrel{
     virtual void clear(void) = 0;
 
     virtual void set_color(unsigned int color) = 0;
+    virtual void set_color(color color) = 0;
     virtual void fill_rectangle(int x, int y, unsigned int w, unsigned int h) = 0;
     virtual void draw_rectangle(int x, int y, unsigned int w, unsigned int h) = 0;
 

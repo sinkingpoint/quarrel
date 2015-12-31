@@ -1,8 +1,9 @@
 #include "engine.h"
 #include "xwindow.h"
+#include "event.h"
+#include "color.h"
 #include <vector>
 #include <memory>
-#include "event.h"
 #include <iostream>
 #include <chrono>
 #include <thread>
@@ -11,6 +12,7 @@ quarrel::engine::engine(std::string window_title, uint window_width, uint window
   game_window(new native_window(window_width, window_height))
 {
   game_window->set_title(window_title);
+  quarrel::color::black;
 }
 
 quarrel::engine::~engine(){
@@ -57,11 +59,11 @@ void quarrel::engine::event_loop(void){
   }
 
   game_window->get_graphics()->clear();
-  game_window->get_graphics()->set_color(0x0000FF);
+  game_window->get_graphics()->set_color(quarrel::color::blue);
   game_window->get_graphics()->draw_rectangle(x, 100, 50, 100);
   game_window->get_graphics()->draw_ellipse(x, 100, 50, 100);
   game_window->get_graphics()->draw_line(x, 10, x+90, 100);
-  game_window->get_graphics()->draw_arc(x, 10, 90, 90, -45, 180);
+  game_window->get_graphics()->draw_arc(x, 10, 90, 90, -45, 179);
   game_window->get_graphics()->draw_string(x, 10, "Vimda Kali");
   std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the CPU for stability
 }
