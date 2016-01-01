@@ -32,6 +32,7 @@ namespace quarrel{
     virtual void draw_arc(int x, int y, unsigned int width, unsigned int height, int angle1, int angle2);
     virtual void fill_arc(int x, int y, unsigned int width, unsigned int height, int angle1, int angle2);
 
+    virtual void draw_image(int x, int y, image img);
   };
 }
 

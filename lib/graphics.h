@@ -2,6 +2,7 @@
 #define QUARREL_GRAPHICS_H
 #include <string>
 #include "color.h"
+#include "image.h"
 
 namespace quarrel{
   class graphics{
@@ -21,6 +22,8 @@ namespace quarrel{
 
     virtual void draw_arc(int x, int y, unsigned int width, unsigned int height, int angle1, int angle2) = 0;
     virtual void fill_arc(int x, int y, unsigned int width, unsigned int height, int angle1, int angle2) = 0;
+
+    virtual void draw_image(int x, int y, image img) = 0;
   };
 }
 

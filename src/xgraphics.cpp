@@ -52,3 +52,12 @@ void quarrel::xgraphics::draw_arc(int x, int y, unsigned int w, unsigned int h, 
 void quarrel::xgraphics::fill_arc(int x, int y, unsigned int w, unsigned int h, int angle1, int angle2){
   XFillArc(display, window, context, x, y, w, h, angle1 * 64, angle2 * 64);
 }
+
+void quarrel::xgraphics::draw_image(int x, int y, quarrel::image img){
+  for(unsigned int _x = 0;_x < img.get_width();_x ++){
+    for(unsigned int _y = 0;_y < img.get_height();_y ++){
+      set_color(img.get_pixel(_x, _y));
+      fill_rectangle(x + _x, y + _y, 1, 1);
+    }
+  }
+}

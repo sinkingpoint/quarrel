@@ -6,9 +6,19 @@ quarrel::image::image(unsigned int width, unsigned int height) :
   pixels(new unsigned int[width * height]){
 }
 
+quarrel::image::image(unsigned int width, unsigned int height, unsigned int base_color) :
+  width(width),
+  height(height),
+  pixels(new unsigned int[width * height]){
+
+  for(unsigned int _x = 0;_x < width;_x ++){
+    for(unsigned int _y = 0;_y < height;_y ++){
+      pixels[_y * width + _x] = base_color;
+    }
+  }
+}
+
 quarrel::image::~image(){
-  delete[] pixels;
-  pixels = nullptr;
 }
 
 unsigned int quarrel::image::get_width() const{
@@ -19,17 +29,21 @@ unsigned int quarrel::image::get_height() const{
   return height;
 }
 
+unsigned int quarrel::image::get_pixel(unsigned int x, unsigned int y){
+  return pixels[y * width + x];
+}
+
 quarrel::image quarrel::image::get_subimage(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const{
   quarrel::image img(width, height);
-  unsigned int* pixels = new unsigned int[width * height];
+  unsigned int* new_pixels = new unsigned int[width * height];
   for(unsigned int _x = 0;_x < width;_x ++){
     for(unsigned int _y = 0;_y < height;_y ++){
-      pixels[y * width + x] = pixels[(y + _y) * this->width + (_x + x)];
+      new_pixels[y * width + x] = pixels[(y + _y) * this->width + (_x + x)];
     }
   }
 
-  img.set_pixels(0, 0, width, height, pixels);
-  delete[] pixels;
+  img.set_pixels(0, 0, width, height, new_pixels);
+  delete[] new_pixels;
   return img;
 }
 

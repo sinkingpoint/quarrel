@@ -7,7 +7,7 @@ add_executable(quarrel ${quarrel_src})
 
 include_directories("lib")
 
-add_definitions("-std=c++11")
+add_definitions("-std=c++11 -g")
 
 find_package(X11 REQUIRED)
 
