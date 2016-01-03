@@ -1,4 +1,5 @@
 #include "image.h"
+#include <cstring>
 
 quarrel::image::image(unsigned int width, unsigned int height) :
   width(width),
@@ -18,7 +19,16 @@ quarrel::image::image(unsigned int width, unsigned int height, unsigned int base
   }
 }
 
+quarrel::image::image(const quarrel::image& img) :
+  width(img.width),
+  height(img.height),
+  pixels(new unsigned int[width * height]){
+
+  std::memcpy(pixels, img.pixels, width * height);
+}
+
 quarrel::image::~image(){
+  delete[] pixels;
 }
 
 unsigned int quarrel::image::get_width() const{

@@ -74,7 +74,7 @@ void quarrel::engine::event_loop(void){
   game_window->get_graphics().draw_arc(x, 10, 90, 90, -45, 179);
   game_window->get_graphics().draw_string(x, 10, "Vimda Kali");
 
-  quarrel::image img = quarrel::image(45, 45, quarrel::color::blue.get());
+  static quarrel::image img = quarrel::image(45, 45, quarrel::color::blue.get());
   game_window->get_graphics().draw_image(50, 50, img);
 
   std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the OS for stability

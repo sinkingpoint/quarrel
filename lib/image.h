@@ -27,6 +27,9 @@ namespace quarrel{
       * @param base_color The color that all the pixels are initialized to
       **/
     image(unsigned int width, unsigned int height, unsigned int base_color);
+
+    image(const image& img);
+
     ~image();
 
     /**
