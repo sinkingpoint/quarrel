@@ -32,6 +32,8 @@ namespace quarrel{
 
     image(const image& img);
 
+    image(image&& img);
+
     ~image();
 
     /**
@@ -78,6 +80,9 @@ namespace quarrel{
     void set_pixel(unsigned int x, unsigned int y, unsigned int color);
 
     void set_pixels(unsigned int x, unsigned y, unsigned int width, unsigned int height, unsigned int* pixels);
+
+    image& operator=(const image& img);
+    image& operator=(image&& img);
   };
 }
 

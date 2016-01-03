@@ -24,7 +24,14 @@ quarrel::image::image(const quarrel::image& img) :
   height(img.height),
   pixels(new unsigned int[width * height]){
 
-  std::memcpy(pixels.get(), img.pixels.get(), width * height);
+  std::memcpy(pixels.get(), img.pixels.get(), width * height * sizeof(unsigned int));
+}
+
+quarrel::image::image(quarrel::image&& img) :
+  width(img.width),
+  height(img.height),
+  pixels(std::move(img.pixels)){
+
 }
 
 quarrel::image::~image(){}
@@ -65,4 +72,22 @@ void quarrel::image::set_pixels(unsigned int x, unsigned int y, unsigned int wid
       pixels[(y + _y) * this->width + (_x + x)] = pixels[_y * width + _x];
     }
   }
+}
+
+quarrel::image& quarrel::image::operator=(const quarrel::image& img){
+  if(width != img.width || height != img.height){
+    width = img.width;
+    height = img.height;
+    pixels.reset(new unsigned int[width * height]);
+  }
+
+  std::memcpy(pixels.get(), img.pixels.get(), width * height * sizeof(unsigned int));
+  return *this;
+}
+
+quarrel::image& quarrel::image::operator=(quarrel::image&& img){
+  width = img.width;
+  height = img.height;
+  pixels = std::move(img.pixels);
+  return *this;
 }
