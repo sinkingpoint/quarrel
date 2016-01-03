@@ -37,14 +37,14 @@ namespace quarrel{
       * for key states
       * @return a const reference to the internal keyboard representation
       **/
-    const keyboard* get_keyboard() const;
+    const keyboard& get_keyboard() const;
 
     /**
       * Gets the mouse input system so the user can query it for
       * the mouse state
       * @return a const reference to the internal mouse representation
       **/
-    const mouse* get_mouse() const;
+    const mouse& get_mouse() const;
 
     /**
       * Runs the event loop of this engine instance, looking for internal

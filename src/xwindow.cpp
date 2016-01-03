@@ -30,12 +30,12 @@ quarrel::xwindow::~xwindow(){
   }
 }
 
-quarrel::graphics* quarrel::xwindow::get_graphics(void){
-  return &graphics_context;
+quarrel::graphics& quarrel::xwindow::get_graphics(void){
+  return graphics_context;
 }
 
-quarrel::eventhandler* quarrel::xwindow::get_eventhandler(void){
-  return &ev_handler;
+quarrel::eventhandler& quarrel::xwindow::get_eventhandler(void){
+  return ev_handler;
 }
 
 void quarrel::xwindow::close(){

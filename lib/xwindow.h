@@ -18,8 +18,8 @@ namespace quarrel{
   public:
     xwindow(uint width, uint height);
     ~xwindow();
-    virtual graphics* get_graphics(void);
-    virtual eventhandler* get_eventhandler(void);
+    virtual graphics& get_graphics(void);
+    virtual eventhandler& get_eventhandler(void);
     virtual void set_size(uint width, uint height);
     virtual void set_title(std::string title);
     virtual void close();

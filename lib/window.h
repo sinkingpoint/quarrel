@@ -50,8 +50,8 @@ namespace quarrel{
       * this window
       * @return a graphics reference which can be used to draw on this window
       **/
-    virtual graphics* get_graphics(void) = 0;
-    virtual eventhandler* get_eventhandler(void) = 0;
+    virtual graphics& get_graphics(void) = 0;
+    virtual eventhandler& get_eventhandler(void) = 0;
   };
 }
 
