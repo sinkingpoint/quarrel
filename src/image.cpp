@@ -24,12 +24,10 @@ quarrel::image::image(const quarrel::image& img) :
   height(img.height),
   pixels(new unsigned int[width * height]){
 
-  std::memcpy(pixels, img.pixels, width * height);
+  std::memcpy(pixels.get(), img.pixels.get(), width * height);
 }
 
-quarrel::image::~image(){
-  delete[] pixels;
-}
+quarrel::image::~image(){}
 
 unsigned int quarrel::image::get_width() const{
   return width;

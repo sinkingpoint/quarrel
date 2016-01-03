@@ -1,6 +1,8 @@
 #ifndef QUARREL_IMAGE_H
 #define QUARREL_IMAGE_H
 
+#include <memory>
+
 namespace quarrel{
   /**
     * An abstract image class as a collection of pixel values with a width
@@ -8,7 +10,7 @@ namespace quarrel{
     **/
   class image{
   private:
-    unsigned int* pixels;
+    std::unique_ptr<unsigned int[]> pixels;
     unsigned int width;
     unsigned int height;
   public:
