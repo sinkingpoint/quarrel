@@ -72,6 +72,15 @@ namespace quarrel{
     unsigned int get_pixel(unsigned int x, unsigned int y);
 
     /**
+      * Gets a copy of the pixels in this image inside the rectangle defined
+      * @param x the left coordinate of the rectangle to get
+      * @param y the top coordinate of the rectangle to get
+      * @param width the width of the rectangle to get
+      * @param height the height of the rectangle to get
+      **/
+    std::unique_ptr<unsigned int[]> get_pixels(unsigned int x, unsigned int y, unsigned int width, unsigned int height);
+
+    /**
       * Sets the color of the pixel at (x, y)
       * @param x the x coordinate of the pixel to set
       * @param y the y coordinate of the pixel to set

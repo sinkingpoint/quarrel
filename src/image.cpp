@@ -62,6 +62,17 @@ quarrel::image quarrel::image::get_subimage(unsigned int x, unsigned int y, unsi
   return img;
 }
 
+std::unique_ptr<unsigned int[]> quarrel::image::get_pixels(unsigned int x, unsigned int y, unsigned int width, unsigned int height){
+  std::unique_ptr<unsigned int[]> data(new unsigned int[width * height]);
+  for(unsigned int _x = 0;x < width;x ++){
+    for(unsigned int _y = 0;y < height;y ++){
+      data[y * width + x] = pixels[(y + _y) * this->width + x];
+    }
+  }
+
+  return data;
+}
+
 void quarrel::image::set_pixel(unsigned int x, unsigned int y, unsigned int color){
   pixels[y * width + x] = color;
 }
