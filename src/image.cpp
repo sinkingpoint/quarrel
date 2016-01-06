@@ -69,7 +69,7 @@ void quarrel::image::set_pixel(unsigned int x, unsigned int y, unsigned int colo
 void quarrel::image::set_pixels(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned int* pixels){
   for(unsigned int _x = 0;_x < width;_x ++){
     for(unsigned int _y = 0;_y < height;_y ++){
-      pixels[(y + _y) * this->width + (_x + x)] = pixels[_y * width + _x];
+      this->pixels[(y + _y) * this->width + (_x + x)] = pixels[_y * width + _x];
     }
   }
 }
