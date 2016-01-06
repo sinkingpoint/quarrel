@@ -1,5 +1,5 @@
 #include "image.h"
-#include <cstring>
+#include <algorithm>
 
 quarrel::image::image(unsigned int width, unsigned int height) :
   width(width),
@@ -24,7 +24,7 @@ quarrel::image::image(const quarrel::image& img) :
   height(img.height),
   pixels(new unsigned int[width * height]){
 
-  std::memcpy(pixels.get(), img.pixels.get(), width * height * sizeof(unsigned int));
+  std::copy(img.pixels.get(), img.pixels.get() + width * height, pixels.get());
 }
 
 quarrel::image::image(quarrel::image&& img) :
@@ -92,7 +92,8 @@ quarrel::image& quarrel::image::operator=(const quarrel::image& img){
     pixels.reset(new unsigned int[width * height]);
   }
 
-  std::memcpy(pixels.get(), img.pixels.get(), width * height * sizeof(unsigned int));
+  std::copy(img.pixels.get(), img.pixels.get() + width * height, pixels.get());
+
   return *this;
 }
 
