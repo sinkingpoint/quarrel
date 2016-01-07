@@ -85,6 +85,9 @@ namespace quarrel{
       **/
     virtual void draw_string(int x, int y, std::string str) = 0;
 
+    /**
+      * Draws the back buffer to the screen
+      **/
     virtual void swap_buffer() = 0;
 
     /**

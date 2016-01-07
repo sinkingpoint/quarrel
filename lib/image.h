@@ -88,6 +88,15 @@ namespace quarrel{
       **/
     void set_pixel(unsigned int x, unsigned int y, unsigned int color);
 
+    /**
+      * Sets the pixels of this image in the rectangle defined.
+      * Doesn't store the given array so it can be freed afterwards
+      * @param x the top coordinate of the pixels to set
+      * @param y the left coordinate of the pixels to set
+      * @param width the width of the rectangle that defines the pixels to set
+      * @param height the height of the rectangle that defines the pixels to set
+      * @param pixels A pointer to an array of width * height pixels to set in this image
+      **/
     void set_pixels(unsigned int x, unsigned y, unsigned int width, unsigned int height, unsigned int* pixels);
 
     image& operator=(const image& img);
