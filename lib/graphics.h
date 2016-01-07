@@ -85,6 +85,8 @@ namespace quarrel{
       **/
     virtual void draw_string(int x, int y, std::string str) = 0;
 
+    virtual void swap_buffer() = 0;
+
     /**
       * Draws an arc with top left coordinates at (x, y), with major and
       * minor axes (width, height).

@@ -77,6 +77,7 @@ void quarrel::engine::event_loop(void){
 
   static quarrel::image img = quarrel::load_image("testbed_assets/test_png.png");
   game_window->get_graphics().draw_image(50, 50, img);
+  game_window->get_graphics().swap_buffer();
 
   std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the OS for stability
 }
