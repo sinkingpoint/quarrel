@@ -18,6 +18,6 @@ void quarrel::entity::move(int deltaX, int deltaY){
 quarrel::image_entity::image_entity(quarrel::image img) : entity(0, 0), img(img){}
 quarrel::image_entity::image_entity(int x, int y, quarrel::image img) : entity(x, y), img(img){}
 
-void quarrel::image_entity::draw(quarrel::graphics& g){
+void quarrel::image_entity::draw(quarrel::graphics& g) const{
   g.draw_image(x, y, img);
 }

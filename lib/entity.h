@@ -24,7 +24,7 @@ namespace quarrel{
   public:
     image_entity(image img);
     image_entity(int x, int y, image img);
-    void draw(graphics& g);
+    void draw(graphics& g) const;
   };
 }
 
