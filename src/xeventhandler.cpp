@@ -1,6 +1,5 @@
 #include "xeventhandler.h"
 #include "event.h"
-#include <iostream>
 #include <vector>
 #include <memory>
 

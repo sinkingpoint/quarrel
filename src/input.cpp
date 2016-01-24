@@ -1,5 +1,4 @@
 #include "input.h"
-#include <iostream>
 
 quarrel::keyboard::keyboard(){
 
@@ -11,7 +10,6 @@ bool quarrel::keyboard::is_key_down(unsigned int key) const{
 
 void quarrel::keyboard::key_pressed(unsigned int key){
   down_keys.insert(key);
-  std::cout << "Key(" << key << ") pressed\n";
 }
 
 void quarrel::keyboard::key_released(unsigned int key){

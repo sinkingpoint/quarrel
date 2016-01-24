@@ -1,4 +1,5 @@
 #include "xwindow.h"
+#include "log.h"
 
 quarrel::xwindow::xwindow(uint width, uint height) :
   display(XOpenDisplay(NULL)),
@@ -9,7 +10,7 @@ quarrel::xwindow::xwindow(uint width, uint height) :
   this->closed = false;
 
   if(display == NULL){
-    std::cerr << "Error creating display" << std::endl;
+    quarrel::log.error(quarrel::record() << "Error creating display");
   }
   XSelectInput(display, base_window, ExposureMask | KeyPressMask | KeyReleaseMask | ButtonPressMask | ButtonReleaseMask);
 

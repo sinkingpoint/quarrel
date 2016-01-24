@@ -6,7 +6,6 @@
 #include "log.h"
 #include <vector>
 #include <memory>
-#include <iostream>
 #include <chrono>
 #include <thread>
 

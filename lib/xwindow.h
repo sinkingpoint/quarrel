@@ -1,7 +1,6 @@
 #ifndef QUARREL_X_WINDOW_H
 #define QUARREL_X_WINDOW_H
 
-#include <iostream>
 #include <X11/Xlib.h>
 #include "window.h"
 #include "graphics.h"
