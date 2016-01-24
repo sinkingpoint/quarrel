@@ -3,6 +3,7 @@
 #include "event.h"
 #include "color.h"
 #include "imageio.h"
+#include "log.h"
 #include <vector>
 #include <memory>
 #include <iostream>
