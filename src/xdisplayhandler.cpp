@@ -1,4 +1,6 @@
 #include "xdisplayhandler.h"
+#include <chrono>
+#include <thread>
 
 /**
   * This contains an implementation of Dekkers algorithm. There
