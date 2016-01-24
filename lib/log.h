@@ -11,11 +11,15 @@ namespace quarrel{
 
   class record{
   private:
-    std::stringstream& record_builder;
+    std::stringstream record_builder;
   public:
+    record();
+    record(const record&);
+
     template<class T>
     record& operator<<(T val){
       record_builder << val;
+      return *this;
     }
 
     std::string str() const;
@@ -27,4 +31,6 @@ namespace quarrel{
     void debug(quarrel::record) const;
     void error(quarrel::record) const;
   };
+
+  const logger log;
 }

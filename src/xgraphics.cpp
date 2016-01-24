@@ -1,7 +1,6 @@
 #include "xgraphics.h"
-#include <iostream>
-#include <string>
 #include "color.h"
+#include "log.h"
 
 quarrel::xgraphics::xgraphics(Display* display, Window window) :
   display(display),
@@ -10,7 +9,7 @@ quarrel::xgraphics::xgraphics(Display* display, Window window) :
 
   XWindowAttributes attrs;
   XGetWindowAttributes(display, window, &attrs);
-  std::cout << "Creating buffer of size " << attrs.width << "x" << attrs.height << " with depth: " << attrs.depth << std::endl;
+  quarrel::log.info(quarrel::record() << "Creating buffer of size " << attrs.width << "x" << attrs.height << " with depth: " << attrs.depth);
   buffer = XCreatePixmap(display, window, attrs.width, attrs.height, attrs.depth);
 
   width = attrs.width;

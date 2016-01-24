@@ -1,6 +1,11 @@
 #include "log.h"
 #include <iostream>
 
+quarrel::record::record(){}
+quarrel::record::record(const record& rec){
+  record_builder << rec.str();
+}
+
 std::string quarrel::record::str() const{
   return record_builder.str();
 }
