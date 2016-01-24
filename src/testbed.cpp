@@ -4,7 +4,10 @@
 int main(int argc, char** args){
   UNUSED(argc);
   UNUSED(args);
-  quarrel::engine engine("Quarrel Testbed", 640, 480);
+
+  quarrel::screen scr;
+
+  quarrel::engine engine("Quarrel Testbed", 640, 480, scr);
   while(engine.is_running()){
     engine.event_loop();
   }

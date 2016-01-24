@@ -8,6 +8,6 @@ void quarrel::screen::add_entity(std::shared_ptr<quarrel::entity> entity){
 
 void quarrel::screen::draw(quarrel::graphics& g) const{
   for(std::shared_ptr<quarrel::entity> ent : entities){
-
+    ent->draw(g);
   }
 }

@@ -5,6 +5,7 @@
 #include "helpers.h"
 #include "window.h"
 #include "input.h"
+#include "screen.h"
 #include <string>
 
 #ifdef X_WINDOW_SYSTEM
@@ -21,6 +22,7 @@ namespace quarrel{
     window* game_window;
     keyboard keyboard_input;
     mouse mouse_input;
+    const screen& current_screen;
   public:
     /**
       * Constructs a new engine instance, passing the given parameters
@@ -29,8 +31,10 @@ namespace quarrel{
       * @param window_width The width of the game window
       * @param window_height The height of the game window
       **/
-    engine(std::string window_title, uint window_width, uint window_height);
+    engine(std::string window_title, uint window_width, uint window_height, const screen& base_screen);
     ~engine();
+
+    void set_screen(const screen& scr);
 
     /**
       * Gets the keyboard input system so the user can query it

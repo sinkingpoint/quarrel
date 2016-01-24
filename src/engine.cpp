@@ -9,8 +9,9 @@
 #include <chrono>
 #include <thread>
 
-quarrel::engine::engine(std::string window_title, uint window_width, uint window_height) :
-  game_window(new native_window(window_width, window_height))
+quarrel::engine::engine(std::string window_title, uint window_width, uint window_height, const screen& base_screen) :
+  game_window(new native_window(window_width, window_height)),
+  current_screen(base_screen)
 {
   game_window->set_title(window_title);
   quarrel::color::black;
@@ -19,6 +20,10 @@ quarrel::engine::engine(std::string window_title, uint window_width, uint window
 quarrel::engine::~engine(){
   delete game_window;
   game_window = NULL;
+}
+
+void quarrel::engine::set_screen(const quarrel::screen& scr){
+  // current_screen = scr;
 }
 
 const quarrel::keyboard& quarrel::engine::get_keyboard() const{
@@ -57,6 +62,8 @@ void quarrel::engine::event_loop(void){
       keyboard_input.key_released(ev->key);
     }
   }
+
+  current_screen.draw(game_window->get_graphics());
 
   std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the OS for stability
 }
