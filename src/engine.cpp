@@ -58,26 +58,5 @@ void quarrel::engine::event_loop(void){
     }
   }
 
-  static int x = 100;
-
-  if(keyboard_input.is_key_down(114)){
-    x ++;
-  }
-  else if(keyboard_input.is_key_down(113)){
-    x --;
-  }
-
-  game_window->get_graphics().clear();
-  game_window->get_graphics().set_color(quarrel::color::blue);
-  game_window->get_graphics().draw_rectangle(x, 100, 50, 100);
-  game_window->get_graphics().draw_ellipse(x, 100, 50, 100);
-  game_window->get_graphics().draw_line(x, 10, x+90, 100);
-  game_window->get_graphics().draw_arc(x, 10, 90, 90, -45, 179);
-  game_window->get_graphics().draw_string(x, 10, "Vimda Kali");
-
-  static quarrel::image img = quarrel::load_image("testbed_assets/test_png.png");
-  game_window->get_graphics().draw_image(50, 50, img);
-  game_window->get_graphics().swap_buffer();
-
   std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the OS for stability
 }
