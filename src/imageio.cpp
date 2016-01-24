@@ -48,7 +48,7 @@ quarrel::image quarrel::load_png_image(const std::string& file_path){
   png_init_io(png_ptr, fp);
   png_read_info(png_ptr, info_ptr);
 
-  unsigned int width, height;
+  png_uint_32 width, height;
   int bit_depth, color_type, interlace_type;
   png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type, &interlace_type, NULL, NULL);
 
