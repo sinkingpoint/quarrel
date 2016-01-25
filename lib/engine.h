@@ -7,6 +7,7 @@
 #include "input.h"
 #include "screen.h"
 #include <string>
+#include <thread>
 
 #ifdef X_WINDOW_SYSTEM
   #include "xwindow.h"
@@ -23,6 +24,8 @@ namespace quarrel{
     keyboard keyboard_input;
     mouse mouse_input;
     const screen& current_screen;
+    std::thread event_thread;
+    std::thread graphics_thread;
   public:
     /**
       * Constructs a new engine instance, passing the given parameters
@@ -49,6 +52,8 @@ namespace quarrel{
       * @return a const reference to the internal mouse representation
       **/
     const mouse& get_mouse() const;
+
+    void graphics_loop();
 
     /**
       * Runs the event loop of this engine instance, looking for internal

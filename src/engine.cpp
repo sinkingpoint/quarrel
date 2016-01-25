@@ -11,6 +11,8 @@
 
 quarrel::engine::engine(std::string window_title, uint window_width, uint window_height, const screen& base_screen) :
   game_window(new native_window(window_width, window_height)),
+  event_thread(&quarrel::engine::event_loop, this),
+  graphics_thread(&quarrel::engine::graphics_loop, this),
   current_screen(base_screen)
 {
   game_window->set_title(window_title);
@@ -18,6 +20,8 @@ quarrel::engine::engine(std::string window_title, uint window_width, uint window
 }
 
 quarrel::engine::~engine(){
+  event_thread.join();
+  graphics_thread.join();
   delete game_window;
   game_window = NULL;
 }
@@ -38,32 +42,40 @@ bool quarrel::engine::is_running() const{
   return !game_window->is_closed();
 }
 
-void quarrel::engine::event_loop(void){
-  std::vector<std::shared_ptr<quarrel::event>> events = game_window->get_eventhandler().get_all_events();
-  for(std::shared_ptr<quarrel::event> event : events){
-    if(event->type == WindowClosedEvent){
-      game_window->close();
-      return;
-    }
-    else if(event->type == MousePressedEvent){
-      std::shared_ptr<quarrel::mouse_pressed_event> ev = std::static_pointer_cast<quarrel::mouse_pressed_event>(event);
-      mouse_input.button_pressed(ev->button);
-    }
-    else if(event->type == MouseReleasedEvent){
-      std::shared_ptr<quarrel::mouse_released_event> ev = std::static_pointer_cast<quarrel::mouse_released_event>(event);
-      mouse_input.button_released(ev->button);
-    }
-    else if(event->type == KeyPressedEvent){
-      std::shared_ptr<quarrel::key_pressed_event> ev = std::static_pointer_cast<quarrel::key_pressed_event>(event);
-      keyboard_input.key_pressed(ev->key);
-    }
-    else if(event->type == KeyReleasedEvent){
-      std::shared_ptr<quarrel::key_released_event> ev = std::static_pointer_cast<quarrel::key_released_event>(event);
-      keyboard_input.key_released(ev->key);
-    }
+void quarrel::engine::graphics_loop(){
+  while(is_running()){
+    current_screen.draw(game_window->get_graphics());
+    game_window->get_graphics().swap_buffer();
+    std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the OS for stability
   }
+}
 
-  current_screen.draw(game_window->get_graphics());
+void quarrel::engine::event_loop(void){
+  while(is_running()){
+    std::vector<std::shared_ptr<quarrel::event>> events = game_window->get_eventhandler().get_all_events();
+    for(std::shared_ptr<quarrel::event> event : events){
+      if(event->type == WindowClosedEvent){
+        game_window->close();
+        break;
+      }
+      else if(event->type == MousePressedEvent){
+        std::shared_ptr<quarrel::mouse_pressed_event> ev = std::static_pointer_cast<quarrel::mouse_pressed_event>(event);
+        mouse_input.button_pressed(ev->button);
+      }
+      else if(event->type == MouseReleasedEvent){
+        std::shared_ptr<quarrel::mouse_released_event> ev = std::static_pointer_cast<quarrel::mouse_released_event>(event);
+        mouse_input.button_released(ev->button);
+      }
+      else if(event->type == KeyPressedEvent){
+        std::shared_ptr<quarrel::key_pressed_event> ev = std::static_pointer_cast<quarrel::key_pressed_event>(event);
+        keyboard_input.key_pressed(ev->key);
+      }
+      else if(event->type == KeyReleasedEvent){
+        std::shared_ptr<quarrel::key_released_event> ev = std::static_pointer_cast<quarrel::key_released_event>(event);
+        keyboard_input.key_released(ev->key);
+      }
+    }
 
-  std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the OS for stability
+    std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the OS for stability
+  }
 }

@@ -1,9 +1,12 @@
 #include "engine.h"
 #include <memory>
+#include <X11/Xlib.h>
 
 int main(int argc, char** args){
   UNUSED(argc);
   UNUSED(args);
+
+  XInitThreads();
 
   quarrel::screen scr(quarrel::color::black);
   std::shared_ptr<quarrel::entity> ent = std::shared_ptr<quarrel::entity>(new quarrel::ellipse_entity(50, 50, 50, 50, quarrel::color::green));
