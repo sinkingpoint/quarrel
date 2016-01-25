@@ -1,13 +1,8 @@
 #include "engine.h"
-#include "xwindow.h"
 #include "event.h"
-#include "color.h"
-#include "imageio.h"
 #include "log.h"
-#include <vector>
 #include <memory>
 #include <chrono>
-#include <thread>
 
 quarrel::engine::engine(std::string window_title, uint window_width, uint window_height, const screen& base_screen) :
   game_window(new native_window(window_width, window_height)),
