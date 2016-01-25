@@ -2,7 +2,7 @@
 #include "log.h"
 
 quarrel::xwindow::xwindow(uint width, uint height) :
-  display(XOpenDisplay(NULL)),
+  display((XInitThreads(), XOpenDisplay(NULL))),//Basically the only use of the comma operator I've every seen
   base_window(XCreateSimpleWindow(display, RootWindow(display, 0), 1, 1, width, height, 0, BlackPixel(display, 0), WhitePixel(display, 0))),
   graphics_context(xgraphics(display, base_window)),
   ev_handler(xeventhandler(display)) {
