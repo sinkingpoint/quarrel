@@ -15,8 +15,8 @@ quarrel::engine::engine(std::string window_title, uint window_width, uint window
 }
 
 quarrel::engine::~engine(){
-  event_thread.join();
   graphics_thread.join();
+  event_thread.join();
   delete game_window;
   game_window = NULL;
 }
@@ -40,8 +40,9 @@ bool quarrel::engine::is_running() const{
 void quarrel::engine::graphics_loop(){
   while(is_running()){
     current_screen.draw(game_window->get_graphics());
+    if(!is_running())break;//Just in case the graphics object is destroyed during writing
     game_window->get_graphics().swap_buffer();
-    std::this_thread::sleep_for(std::chrono::milliseconds(1)); //Return control back to the OS for stability
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
 }
 
