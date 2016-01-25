@@ -14,7 +14,5 @@ int main(int argc, char** args){
   scr.add_entity(ent);
 
   quarrel::engine engine("Quarrel Testbed", 640, 480, scr);
-  while(engine.is_running()){
-    engine.event_loop();
-  }
+  while(engine.is_running()){}
 }
