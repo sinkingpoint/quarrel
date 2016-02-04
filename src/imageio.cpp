@@ -1,5 +1,6 @@
 #include "imageio.h"
 #include <png.h>
+#include <stdexcept>
 
 quarrel::image quarrel::load_image(const std::string& file_path){
   std::string extension = file_path.substr(file_path.find_last_of(".") + 1);

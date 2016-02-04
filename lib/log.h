@@ -27,6 +27,7 @@ namespace quarrel{
 
   class logger{
   public:
+    logger();
     void info(quarrel::record) const;
     void debug(quarrel::record) const;
     void error(quarrel::record) const;

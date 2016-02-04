@@ -10,6 +10,10 @@ std::string quarrel::record::str() const{
   return record_builder.str();
 }
 
+quarrel::logger::logger(){
+  
+}
+
 void quarrel::logger::info(quarrel::record rec) const{
   std::cout << "[INFO] " << rec.str() << std::endl;
 }
