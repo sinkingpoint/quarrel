@@ -95,6 +95,9 @@ quarrel::image quarrel::load_png_image(const std::string& file_path){
       else if(num_channels == 4){
         a = row_pointers[y][x_byte+3];
       }
+      else{
+          a = 0xFF;
+      }
 
       image_pixels[y * width + x] = ((int)a) << 24 | ((int)r) << 16 | ((int)g) << 8 | ((int)b);
     }

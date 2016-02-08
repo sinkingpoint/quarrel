@@ -38,7 +38,6 @@ namespace quarrel{
 
   class mouse{
   private:
-    unsigned int num_buttons;
     std::set<unsigned int> down_buttons;
   public:
     mouse();
