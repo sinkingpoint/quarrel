@@ -3,8 +3,8 @@
 #include "log.h"
 
 quarrel::xgraphics::xgraphics(Display* display, Window window) :
-  display(display),
   window(window),
+  display(display),
   context(XCreateGC(display, window, 0, NULL)){
 
   XWindowAttributes attrs;

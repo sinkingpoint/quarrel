@@ -66,7 +66,7 @@ quarrel::image quarrel::load_png_image(const std::string& file_path){
   if (bit_depth < 8)png_set_packing(png_ptr);
 
   //Handle interlacing
-  unsigned int number_of_passes = png_set_interlace_handling(png_ptr);
+  png_set_interlace_handling(png_ptr);
 
   png_read_update_info(png_ptr, info_ptr);
   bit_depth = png_get_bit_depth(png_ptr, info_ptr);

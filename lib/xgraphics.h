@@ -9,9 +9,9 @@
 namespace quarrel{
   class xgraphics : public graphics{
   private:
-    GC context;
     Window window;
     Display* display;
+    GC context;
     Pixmap buffer;
     unsigned int width, height;
   public:

@@ -6,9 +6,9 @@
 
 quarrel::engine::engine(std::string window_title, uint window_width, uint window_height, const screen& base_screen) :
   game_window(new native_window(window_width, window_height)),
+  current_screen(base_screen),
   event_thread(&quarrel::engine::event_loop, this),
-  graphics_thread(&quarrel::engine::graphics_loop, this),
-  current_screen(base_screen)
+  graphics_thread(&quarrel::engine::graphics_loop, this)
 {
   game_window->set_title(window_title);
 }
@@ -21,6 +21,7 @@ quarrel::engine::~engine(){
 }
 
 void quarrel::engine::set_screen(const quarrel::screen& scr){
+  UNUSED(scr);
   // current_screen = scr;
 }
 

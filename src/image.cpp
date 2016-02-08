@@ -66,7 +66,7 @@ std::unique_ptr<unsigned int[]> quarrel::image::get_pixels(unsigned int x, unsig
   std::unique_ptr<unsigned int[]> data(new unsigned int[width * height]);
   for(unsigned int _x = 0;x < width;x ++){
     for(unsigned int _y = 0;y < height;y ++){
-      data[y * width + x] = pixels[(y + _y) * this->width + x];
+      data[_y * width + _x] = pixels[(y + _y) * this->width + (_x + x)];
     }
   }
 

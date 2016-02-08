@@ -10,9 +10,9 @@ namespace quarrel{
     **/
   class image{
   private:
-    std::unique_ptr<unsigned int[]> pixels;
     unsigned int width;
     unsigned int height;
+    std::unique_ptr<unsigned int[]> pixels;
   public:
     /**
       * Constructs an empty image with size (width, height). Accessing the pixels
