@@ -12,6 +12,7 @@ include_directories("lib")
 add_definitions("-std=c++11")
 
 find_package(X11 REQUIRED)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -Wextra")
 
 if (X11_FOUND)
   message (STATUS "Including X11 Libaries from " ${X11_INCLUDE_DIR})
