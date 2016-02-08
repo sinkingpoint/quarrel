@@ -18,6 +18,8 @@ namespace quarrel{
   public:
     window();
 
+    virtual ~window();
+
     /**
       * Checks whether this window has been closed (either by the
       * user or otherwise). If this is true, the client should probably

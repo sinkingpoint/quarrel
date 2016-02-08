@@ -11,7 +11,6 @@ quarrel::engine::engine(std::string window_title, uint window_width, uint window
   current_screen(base_screen)
 {
   game_window->set_title(window_title);
-  quarrel::color::black;
 }
 
 quarrel::engine::~engine(){
