@@ -1,19 +1,19 @@
 #include "image.h"
 #include <algorithm>
 
-quarrel::image::image(unsigned int width, unsigned int height) :
-  width(width),
-  height(height),
-  pixels(new unsigned int[width * height]){
+quarrel::image::image(unsigned int _width, unsigned int _height) :
+  width(_width),
+  height(_height),
+  pixels(new unsigned int[_width * _height]){
 }
 
-quarrel::image::image(unsigned int width, unsigned int height, unsigned int base_color) :
-  width(width),
-  height(height),
-  pixels(new unsigned int[width * height]){
+quarrel::image::image(unsigned int _width, unsigned int _height, unsigned int base_color) :
+  width(_width),
+  height(_height),
+  pixels(new unsigned int[_width * _height]){
 
-  for(unsigned int _x = 0;_x < width;_x ++){
-    for(unsigned int _y = 0;_y < height;_y ++){
+  for(unsigned int _x = 0;_x < _width;_x ++){
+    for(unsigned int _y = 0;_y < _height;_y ++){
       pixels[_y * width + _x] = base_color;
     }
   }
@@ -22,7 +22,7 @@ quarrel::image::image(unsigned int width, unsigned int height, unsigned int base
 quarrel::image::image(const quarrel::image& img) :
   width(img.width),
   height(img.height),
-  pixels(new unsigned int[width * height]){
+  pixels(new unsigned int[img.width * img.height]){
 
   std::copy(img.pixels.get(), img.pixels.get() + width * height, pixels.get());
 }
